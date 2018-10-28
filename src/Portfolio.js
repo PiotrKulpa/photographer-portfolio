@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import './Portfolio.css';
 import Masonry from 'masonry-layout';
 import imagesLoaded from 'imagesloaded';
+import 'lightbox2/dist/js/lightbox.js';
+import 'lightbox2/dist/css/lightbox.css';
 
 class Portfolio extends Component {
 
@@ -20,63 +22,41 @@ class Portfolio extends Component {
       });
 
       console.log(this.state.images)
-    });
-    // init Masonry after all images have loaded
-    var grid = document.querySelector('.grid');
-    var msnry;
 
-    imagesLoaded( grid, function() {
-      // init Isotope after all images have loaded
-      msnry = new Masonry( grid, {
-        itemSelector: '.grid-item',
-        columnWidth: '.grid-sizer',
-        percentPosition: true
+      // init Masonry after all images have loaded
+      var grid = document.querySelector('.grid');
+      var msnry;
+
+      imagesLoaded( grid, function() {
+        // init Isotope after all images have loaded
+        msnry = new Masonry( grid, {
+          itemSelector: '.grid-item',
+          columnWidth: '.grid-sizer',
+          percentPosition: true
+        });
       });
     });
+
+
   }
 
   render() {
     return (
       <div className="App">
-
+    <a href="https://dl.airtable.com/iEBf5FUHSSKShY7XUqVn_full_01.jpg" data-lightbox="image-1" data-title="My caption">
+      <img src="https://dl.airtable.com/iEBf5FUHSSKShY7XUqVn_full_01.jpg" width="300"/>
+    </a>
       <h1>Portfolio</h1>
 
         <div className="grid">
           <div className="grid-sizer"></div>
-          <div className="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/orange-tree.jpg" />
-          </div>
-          <div className="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/submerged.jpg" />
-          </div>
-          <div className="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/look-out.jpg" />
-          </div>
-          <div className="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/one-world-trade.jpg" />
-          </div>
-          <div className="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/drizzle.jpg" />
-          </div>
-          <div className="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/cat-nose.jpg" />
-          </div>
-          <div className="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/contrail.jpg" />
-          </div>
-          <div className="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/golden-hour.jpg" />
-          </div>
-          <div className="grid-item">
-            <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" />
-          </div>
-
           {!this.state.images ? null : this.state.images.map((el) =>
-            <div className="grid-item">
-              <img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/82/flight-formation.jpg" />
+            <div className="grid-item" key={el.id}>
+            <a href={el.fields.Attachments[0].url} data-lightbox="images" data-title={el.fields.Caption}>
+              <img src={el.fields.Attachments[0].thumbnails.large.url} alt={el.fields.Caption} />
+            </a>
             </div>
           )}
-
         </div>
 
 
