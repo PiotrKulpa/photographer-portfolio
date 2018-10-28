@@ -1,0 +1,21 @@
+.labeled-input-row label, .labeled-textarea-row label {
+    color: #212121 !important;
+}
+.labeled-input-row label, .labeled-textarea-row label {
+    border-bottom-color: #333 !important;
+}
+.labeled-input-row label {
+    -ms-flex-wrap: nowrap;
+    flex-wrap: nowrap !important;
+    white-space: nowrap;
+}
+.labeled-input-row input, .labeled-input-row label, .labeled-input-row--label {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex !important;
+    -ms-flex-item-align: stretch;
+    align-self: stretch;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+}
