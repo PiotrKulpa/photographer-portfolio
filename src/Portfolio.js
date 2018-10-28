@@ -43,9 +43,6 @@ class Portfolio extends Component {
   render() {
     return (
       <div className="App">
-    <a href="https://dl.airtable.com/iEBf5FUHSSKShY7XUqVn_full_01.jpg" data-lightbox="image-1" data-title="My caption">
-      <img src="https://dl.airtable.com/iEBf5FUHSSKShY7XUqVn_full_01.jpg" width="300"/>
-    </a>
       <h1>Portfolio</h1>
 
         <div className="grid">
