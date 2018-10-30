@@ -1,14 +1,29 @@
+.contact-form .form-group {
+    margin-bottom: 30px;
+}
+.labeled-input-row {
+    display: flex;
+    align-items: center;
+}
+
+.labeled-input-row, .labeled-textarea-row {
+    position: relative;
+}
+
 .labeled-input-row label, .labeled-textarea-row label {
     color: #212121 !important;
-}
-.labeled-input-row label, .labeled-textarea-row label {
     border-bottom-color: #333 !important;
-}
-.labeled-input-row label {
     -ms-flex-wrap: nowrap;
     flex-wrap: nowrap !important;
     white-space: nowrap;
+    display: flex !important;
+    align-self: stretch !important;
+    align-items: center !important;
+    margin-bottom: 0 !important;
 }
+
+
+
 .labeled-input-row input, .labeled-input-row label, .labeled-input-row--label {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -18,4 +33,46 @@
     -webkit-box-align: center;
     -ms-flex-align: center;
     align-items: center;
+    padding-left: 15px;
+    flex-grow: 1;
+    border: 0;
+    border-bottom: 1px solid #eee;
+    background-color: transparent;
+    min-width: 0;
+    width: auto;
+}
+
+.contact-form input, .contact-form textarea {
+    border-bottom-color: #dadada !important;
+}
+
+.labeled-textarea-row label {
+    font-weight: 400;
+    padding: 10px 0;
+    margin-bottom: -1px;
+    z-index: 2;
+    border-bottom: 1px solid;
+    border-bottom-color: #333 !important;
+    max-width: 100% !important;
+}
+
+.contact-form textarea {
+    background-image: linear-gradient(#dadada 1px, transparent 1px);
+    border-bottom-color: #dadada;
+}
+
+.labeled-textarea-row textarea {
+    display: block;
+    width: 100%;
+    height: 174px;
+    resize: vertical;
+    padding: 0;
+    padding-top: 10px;
+    line-height: 41px;
+    background-color: transparent;
+    background-image: linear-gradient(#eee 1px,transparent 1px);
+    background-attachment: local;
+    background-size: 100% 41px;
+    border: 0;
+    z-index: 1;
 }

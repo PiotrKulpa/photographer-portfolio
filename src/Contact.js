@@ -34,7 +34,7 @@ class Contact extends Component {
               </div>
 
 
-              <div className="row" style={{ display: 'block' }}>
+              <div className="row" style={{ display: 'block', marginTop: '55px' }}>
                 <form action="#" className="contact-form" id="el_5bd4941a838f6" data-alerts="0" data-alerts-msg="Please fill &quot;%&quot; field." data-privacy-error-msg="You must check privacy policy checkbox in order to submit the form." noValidate="">
                 <div className="row">
                 <div className="col-sm-6">
