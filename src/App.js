@@ -7,11 +7,18 @@ import Contact from './Contact';
 import Nav from './Nav';
 import Footer from './Footer';
 
+/**
+ * Class representing a Main component.
+ * @extends React.Component
+ */
 class App extends Component {
 
   componentDidMount() {
   }
 
+  /**
+   * Render view of this component.
+   */
   render() {
     return (
       <div>
@@ -43,4 +50,5 @@ class App extends Component {
   }
 }
 
+/** @module App */
 export default App;
