@@ -5,23 +5,30 @@ import imagesLoaded from 'imagesloaded';
 import 'lightbox2/dist/js/lightbox.js';
 import 'lightbox2/dist/css/lightbox.css';
 
+/**
+ * Class representing a Portfolio component.
+ * @extends React.Component
+ */
 class Portfolio extends Component {
 
+  /**
+   * @property {object}  this.state           - The default values for state.
+   * @property {array}   state.images         - The array of default images.
+   */
   state = {
     images: []
   }
 
+  /** Fetch JSON data from airtable */
   componentDidMount() {
-
     fetch('https://api.airtable.com/v0/apporPHdeV86qOTq9/Table%201?api_key=keyzNbhuvWFg1XFah')
     .then((res) => res.json())
     .then((result) => {
 
+      // update state.images after data is fetched
       this.setState((state) => {
         return {images: result.records};
       });
-
-      console.log(this.state.images)
 
       // init Masonry after all images have loaded
       var grid = document.querySelector('.grid');
@@ -35,16 +42,17 @@ class Portfolio extends Component {
           percentPosition: true
         });
       });
+
     });
-
-
   }
 
+  /**
+   * Render view of this component.
+   */
   render() {
     return (
       <div className="App">
       <h1>Portfolio</h1>
-
         <div className="grid">
           <div className="grid-sizer"></div>
           {!this.state.images ? null : this.state.images.map((el) =>
@@ -55,12 +63,10 @@ class Portfolio extends Component {
             </div>
           )}
         </div>
-
-
-
       </div>
     );
   }
 }
 
+/** @module Portfolio */
 export default Portfolio;
