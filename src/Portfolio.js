@@ -11,24 +11,33 @@ import 'lightbox2/dist/css/lightbox.css';
  */
 class Portfolio extends Component {
 
+  /** Server address */
+  connectionUrl = 'https://api.airtable.com/v0/apporPHdeV86qOTq9/Table%201?api_key=keyzNbhuvWFg1XFah';
+
   /**
    * @property {object}  this.state           - The default values for state.
    * @property {array}   state.images         - The array of default images.
    */
   state = {
-    images: []
+    images: [],
+    warningMsg: ''
   }
 
   /** Fetch JSON data from airtable */
   componentDidMount() {
-    fetch('https://api.airtable.com/v0/apporPHdeV86qOTq9/Table%201?api_key=keyzNbhuvWFg1XFah')
-    .then((res) => res.json())
+    fetch(this.connectionUrl)
+    .then((res) => {
+
+      // update state.warningMsg after data is fetched
+      this.setState({warningMsg: 'Images have loaded'});
+
+        console.log(this.state.warningMsg);
+      return res.json()
+    })
     .then((result) => {
 
       // update state.images after data is fetched
-      this.setState((state) => {
-        return {images: result.records};
-      });
+      this.setState({images: result.records});
 
       // init Masonry after all images have loaded
       var grid = document.querySelector('.grid');
@@ -43,7 +52,12 @@ class Portfolio extends Component {
         });
       });
 
-    });
+    })
+    .catch((err) => {
+      this.setState({warningMsg: 'Connection error'});
+      console.log(this.state.warningMsg);
+    }
+    );
   }
 
   /**
